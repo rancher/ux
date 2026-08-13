@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Under the hood · Rancher_DS_NEW</title>
+<link rel="stylesheet" href="tokens/tokens.css"><link rel="stylesheet" href="site.css"></head>
+<body><header><span class="brand">Rancher_DS_NEW</span><nav><a href="index.html">Home</a><a href="why.html">Why adopt it</a><a href="start.html">Getting started</a><a href="hood.html" class="active">Under the hood</a><a href="faq.html">Coexistence & FAQ</a></nav>
+<select id="theme" aria-label="Theme"><option value="light">Light</option><option value="dark">Dark</option><option value="prime-light">Prime Light</option><option value="prime-dark">Prime Dark</option></select></header>
+<main>
+<h1>Under the hood</h1>
+<p class="sub">For those who want to know why it holds, not just that it does.</p>
+<h2>Token architecture</h2>
+<p>Three tiers, one direction. Primitives (hidden from publishing) hold every raw value in luminance-ordered colour ramps. Theme tokens are aliases only — 125 published tokens across four modes, each carrying its CSS custom-property name. Component tokens alias into those. An automated audit confirms zero hardcoded colours in any published component.</p>
+<pre><span class="c">/* engineering handoff is the same file this site uses */</span>
+<span class="k">.banner-error</span> {
+  <span class="k">background</span>: <span class="s">var(--semantic-error-badge)</span>;
+  <span class="k">color</span>: <span class="s">var(--semantic-on-error-badge)</span>; <span class="c">/* AA on its own wash, all four themes */</span>
+}</pre>
+<h2>The role vocabulary</h2>
+<p>New components are composed from a closed menu of about 25 role tokens — surfaces, text, borders, interactive accents, feedback pairs. Variable scopes enforce it in the picker: text tokens only appear for text, borders only for strokes. A new token is only born when a value must diverge from its role.</p>
+<h2>Self-contained feedback colours</h2>
+<p>Every semantic family ships as a pair: a wash plus its own AA-tuned foreground. A message chip is legible on any surface it lands on, in any theme, because it brings its own background. Six types: Error, Warning, Success, Info, Attention — and Neutral, for information that implies no state at all.</p>
+<h2>Tokens, ready to consume</h2>
+<table class="tok"><tr><th>Token</th><th>Light</th><th>Dark</th></tr>
+<tr><td><code>--semantic-error</code></td><td><span class="sw" style="background:#d42b3a"></span>#d42b3a</td><td><span class="sw" style="background:#d42b3a"></span>#d42b3a</td></tr>
+<tr><td><code>--type-body</code></td><td><span class="sw" style="background:#1f212b"></span>#1f212b</td><td><span class="sw" style="background:#f5f5f8"></span>#f5f5f8</td></tr>
+<tr><td><code>--body-background</code></td><td><span class="sw" style="background:#ffffff"></span>#ffffff</td><td><span class="sw" style="background:#14151d"></span>#14151d</td></tr></table>
+<p>The full set: <a href="tokens/tokens.css">tokens.css</a> (drop-in custom properties, four themes) and <a href="tokens/tokens.json">tokens.json</a> (for build pipelines). <a href="https://www.figma.com/design/Eu4nW2RSGyezdjlXhxzmj8/Rancher_DS_NEW?node-id=5013-7281">The palette in Figma</a> · <a href="https://www.figma.com/design/Eu4nW2RSGyezdjlXhxzmj8/Rancher_DS_NEW?node-id=5858-433">the standing dark-mode QA page</a>.</p>
+</main>
+<footer>Rancher_DS_NEW · a SUSE design system preview · this site is styled entirely by tokens/tokens.css — try the theme switcher.</footer>
+<script src="theme.js"></script></body></html>
